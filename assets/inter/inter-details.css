@@ -1,0 +1,91 @@
+/* Center the container on the page */
+.container {
+    margin: auto;
+    max-width: 900px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Center the title */
+h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-style: normal;
+    }
+
+h5 {
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-style: normal;
+    
+}
+
+/* Center the user information */
+h6 {
+    text-align: left;
+    margin: 5px 0;
+}
+
+.container-t {
+    text-align: left;
+    margin: 5px 0;
+}
+
+/* Align the custom control to the left */
+.custom-control {
+    text-align: right;
+    margin-right: 10px;
+}
+
+/* Form styling */
+form .form-label {
+    font-weight: bold;
+}
+
+form .form-control {
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+form button {
+    margin-top: 20px;
+    
+}
+
+form button:not(:last-child) {
+    margin-right: 10px;
+}
+
+
+
+
+
+/* space between inputs */
+.row {
+    margin-bottom: 10px; 
+  }
+  
+  .row label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .row input,
+  .row select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+
+  .divbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

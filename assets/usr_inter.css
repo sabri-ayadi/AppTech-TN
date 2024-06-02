@@ -1,0 +1,93 @@
+
+
+.container {
+    position: relative;
+    font-size: 14px;
+    font-style: normal; /* not working*/
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    border: 2px solid #167F92;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-container1 {
+    position: relative;
+    text-align: left;
+    color: #ffffff;
+    background-color: #167F92;
+    margin: 0 auto; /* This centers the container horizontally */
+    padding: 20px; /* Adjust padding as needed */
+    border-radius: 10px;
+
+ 
+}
+
+.custom-container2 {
+    position: relative;
+    text-align: left;
+    margin: 0 auto; /* This centers the container horizontally */
+    padding: 20px; /* Adjust padding as needed */
+ 
+}
+
+
+.form .input-group {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.form .input-group label {
+    flex: 0 0 200px; /* Fixed width for labels */
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form .input-group input[type="text"] {
+    flex: 1; /* Take remaining space */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+.form .input-group input[type="email"] {
+    flex: 1; /* Take remaining space */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+.form button {
+    width: 30%;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #167F92;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+.form button:hover {
+    background-color: #024457;
+}
+
+.divbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px; /* Adjust margin as needed */
+}

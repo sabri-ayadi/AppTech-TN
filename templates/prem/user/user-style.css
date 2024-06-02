@@ -1,0 +1,74 @@
+
+/* Modal styles */
+.modal {
+    display: none; /* Hide the modal by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900; /* Set z-index of modal backdrop to be lower than modal */
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust backdrop color and opacity if needed */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal header */
+.modal-header {
+  background-color: #1dc95a; /* Set background color */
+  color: #fff; /* Set text color */
+  border-bottom: 1px solid #4a0433; /* Add a bottom border */
+  border-radius: 10px 10px 10px 10px; /* Add border radius to top corners */
+
+}
+
+/* Modal body */
+.modal-body {
+  padding-top: 15px; /* Add space between header and body */
+  padding-bottom: 20px; /* Add space between body and footer */
+}
+
+/* Modal footer */
+.modal-footer {
+    padding: 2px 16px;
+
+}
+
+
+/* space between form elements */
+.form-group {
+  margin-bottom: 15px; 
+}

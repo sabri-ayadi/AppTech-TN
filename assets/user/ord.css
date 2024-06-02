@@ -1,0 +1,32 @@
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading class */
+.heading {
+    color: blue;
+    font-size: 24px;
+}
+
+/* Paragraph class */
+.paragraph {
+    font-size: 18px;
+}
+
+/* Additional styles */
+.mail {
+    font-weight: bold;
+    color: green;
+}
+
+.type {
+    font-style: italic;
+    color: red;
+}

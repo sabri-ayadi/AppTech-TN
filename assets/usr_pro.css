@@ -1,0 +1,80 @@
+.container {
+    position: relative;
+    font-size: 14px;
+    font-style: normal; /* not working*/
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    border: 2px solid #167F92;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-container1 {
+    position: relative;
+    text-align: left;
+    color: #ffffff;
+    background-color: #167F92;
+    margin: 0 auto; /* This centers the container horizontally */
+    padding: 10px; /* Adjust padding as needed */
+    border-radius: 10px;
+
+ 
+}
+
+.custom-container2 {
+    position: relative;
+    text-align: left;
+    margin: 0 auto; /* This centers the container horizontally */
+    padding: 20px; /* Adjust padding as needed */
+ 
+}
+
+.form {
+    text-align: left; /* Reset text alignment for the form */
+  }
+  
+  .form label {
+    display: block; /* Display labels as block elements for better spacing */
+    margin-bottom: 5px; /* Add margin below each label */
+  }
+  
+  .form input {
+    width: 100%; /* Make inputs fill the width of their container */
+    box-sizing: border-box; /* Include padding and border in input's total width */
+    margin-bottom: 10px; /* Add margin below each input */
+
+    flex: 1; /* Take remaining space */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+  }
+
+  
+
+
+.divbtn button {
+    width: 20%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.divbtn button:hover {
+    background-color: #056cdb;
+}
+
+.divbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.underbtn {
+
+    font-style: italic;
+}
