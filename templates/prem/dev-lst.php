@@ -96,7 +96,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
                 // echo "<td>" . $row["start_date"] . "</td>";
                 echo "<td>" . $row["state"] . "</td>";
                 // echo "<td>" . $row["health"] . "</td>";
-                echo "<td class='actions'><a href='inter-view.php?id_dev=". $row["id_dev"]. "'>View</a> | <a href='inter-edit.php?id_dev=". $row["id_dev"]. "'>Edit</a> | <a href='inter-delete.php?id_dev=". $row["id_dev"]. "'>Delete</a></td>";
+                echo "<td class='actions'><a href='dev-view.php?id_dev=". $row["id_dev"]. "'>View</a> | <a href='dev-edit.php?id_dev=". $row["id_dev"]. "'>Edit</a></td>";
                 echo "</tr>";
             }
         } 

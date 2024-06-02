@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
 
             <div class="form">
                 <form id="laptop-create-form" action="" method="post">
-
+                        <!-- update ther dev-edit.php file with the following code if this list get updated -->
                         <div class="row">
                             <div class="col">
                                 <label for="type">Type: *</label>
@@ -142,8 +142,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
                             <div class="col">
                                 <label>Antivirus:</label>
                                 <div class="radio-group">
-                                    <label><input type="radio" name="antivirus" value="yes"> Yes</label> &nbsp; &nbsp;
-                                    <label><input type="radio" name="antivirus" value="no"> No</label>
+                                    <label><input type="radio" name="antivirus" value="Yes"> Yes</label> &nbsp; &nbsp;
+                                    <label><input type="radio" name="antivirus" value="No"> No</label> &nbsp; &nbsp;
+                                    <label><input type="radio" name="antivirus" value="N/A"> N/A</label>
                                 </div>
                             </div>
                         </div>
