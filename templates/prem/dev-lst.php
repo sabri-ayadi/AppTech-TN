@@ -45,23 +45,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
 	      	<th>Name</th>
 	      	<th>Session</th>
 	      	<th>UserName</th>
-	      	<!-- <th>Location</th> -->
 	      	<th>Departement</th>
 	      	<th>Model</th>
-	      	<!-- <th>CPU</th> -->
-	      	<!-- <th>RAM</th> -->
-	      	<!-- <th>Stotage</th> -->
-	      	<!-- <th>OS</th> -->
 	      	<th>IP</th>
-	      	<!-- <th>MAC</th> -->
-	      	<!-- <th>S/N</th> -->
-	      	<!-- <th>Domaine</th> -->
-	      	<!-- <th>Conx-Type</th> -->
-	      	<!-- <th>MS Office</th> -->
-	      	<!-- <th>Antivirus</th> -->
-	      	<!-- <th>StartDate</th> -->
-		      <th>State</th>
-			    <!-- <th>Health</th> -->
+		      <th>Etat</th>
 	        <th>Actions</th>
 	    </tr>
 
@@ -79,31 +66,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
                 echo "<td>" . $row["nom"] . "</td>";
                 echo "<td>" . $row["session"] . "</td>";
                 echo "<td>" . $row["username"] . "</td>";
-                // echo "<td>" . $row["location"] . "</td>";
                 echo "<td>" . $row["dep"] . "</td>";
                 echo "<td>" . $row["model"] . "</td>";
-                // echo "<td>" . $row["cpu"] . "</td>";
-                // echo "<td>" . $row["ram"] . "</td>";
-                // echo "<td>" . $row["storage"] . "</td>";
-                // echo "<td>" . $row["os"] . "</td>";
                 echo "<td>" . $row["ip"] . "</td>";
-                // echo "<td>" . $row["mac"] . "</td>";
-                // echo "<td>" . $row["sn"] . "</td>";
-                // echo "<td>" . $row["domain"] . "</td>";
-                // echo "<td>" . $row["conx_type"] . "</td>";
-                // echo "<td>" . $row["ms_office"] . "</td>";
-                // echo "<td>" . $row["antivirus"] . "</td>";
-                // echo "<td>" . $row["start_date"] . "</td>";
                 echo "<td>" . $row["state"] . "</td>";
-                // echo "<td>" . $row["health"] . "</td>";
                 echo "<td class='actions'><a href='dev-view.php?id_dev=". $row["id_dev"]. "'>View</a> | <a href='dev-edit.php?id_dev=". $row["id_dev"]. "'>Edit</a></td>";
                 echo "</tr>";
             }
         } 
-        // else {
-        //     // Display a message to the user
-        //     echo "<tr><td colspan='7'>No data found.</td></tr>";
-        // } 
+        else {
+            // Display a message to the user
+            echo "<tr><td colspan='7'>No data found.</td></tr>";
+        } 
       ?>
                 
   </tbody>

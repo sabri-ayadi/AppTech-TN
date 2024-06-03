@@ -1,5 +1,4 @@
 <?php
-// user-edit.php
 session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1) {
@@ -29,7 +28,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
     <meta charset="UTF-8">
     <title>Edit Device</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/dev/add_laptop.css">
+    <link rel="stylesheet" href="/assets/dev/dev-edit.css">
 </head>
 <body>
 
@@ -37,7 +36,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
 
 <div class="container">
     <div class="custom-container">
-        <h2>Modifier Equipement</h2>
+        <h2><font color="green">Modifier Equipement N° : </font><?php echo $dev['id_dev']; ?></h2> </br>
         
         <!-- Display success and error messages here -->
         <?php if (isset($_SESSION['success_message'])): ?>
@@ -55,8 +54,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
         <?php endif; ?>
         
 
-        <form method="POST" action="user/user-edit-pro-conf.php">
-
+        <form method="POST" action="dev/dev-edit-conf.php">
+            <input type="hidden" name="id_dev" value="<?php echo $dev['id_dev']; ?>">
 
             <div class="row">
                 <div class="col">                    
@@ -135,7 +134,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
             </div>
             <div class="col">
                 <label for="domain">Domain: *</label>
-                <input type="text" name="domain" id="domain" value="<?php echo $dev['domain']; ?>" value="mitechtn.lan" required>
+                <input type="text" name="domain" id="domain" value="<?php echo $dev['domain']; ?>" value="mitechtn.lan" required readonly>
             </div>
         </div>
 
