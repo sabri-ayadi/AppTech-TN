@@ -50,7 +50,7 @@ $(document).ready(function() {
     "info": true,
     "autoWidth": true,
     "language": idioma,
-    "lengthMenu": [[5,10,20, -1],[5,10,50,"Mostrar Todo"]],
+    "lengthMenu": [[10,20, -1],[10, 20, 50,"Mostrar Todo"]],
     dom: 'Bfrt<"col-md-6 inline"i> <"col-md-6 inline"p>',
     
     
@@ -135,16 +135,6 @@ $(document).ready(function() {
                             columns: [ 0, 1 ]
                         },
                     },
-                    // {
-                    //     extend:    'csvHtml5',
-                    //     text:      '<i class="fa fa-file-text-o"></i>CSV',
-                    //     title:'Titulo de tabla en CSV',
-                    //     titleAttr: 'CSV',
-                    //     className: 'btn btn-app export csv',
-                    //     exportOptions: {
-                    //         columns: [ 0, 1 ]
-                    //     }
-                    // },
 
                     {
                         extend:    'pageLength',
@@ -155,20 +145,7 @@ $(document).ready(function() {
           
           
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-          
-        
-    
-        
+  
     });
 
   

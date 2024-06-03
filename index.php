@@ -1,26 +1,32 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>LOGIN</title>
-	<link rel="stylesheet" type="text/css" href="/assets/login.css">
+	<link rel="stylesheet" type="text/css" href="/assets/log/login.css">
 </head>
 <body>
-	<form action="login.php" method="post">
-		<h2>Login</h2>
+	<div class="container">
+		<div class="login">
+			<form action="login.php" method="POST">
+				<img src="/assets/navbar-ad/logo.png" alt="logo" class="logo">
+				<h2>AppTech Login</h2>
 
-		<?php if (isset($_GET['error'])) { ?>
-			<p class="error"><?php echo $_GET['error']; ?></p>
-		<?php } ?>
+				<?php if (isset($_GET['error'])) { ?>
+					<p class="error"><?php echo $_GET['error']; ?></p>
+				<?php } ?>
 
-		<label>Matriculation Number</label>
-		<input type="text" name="mat" placeholder="Matriculation Number"><br>
+				<label>Matricule, Username :</label>
+				<input type="text" name="mat" placeholder="matricule ou username" required><br>
 
-		<label>Password</label>
-		<input type="password" name="password" placeholder="Password"><br>
+				<label>Mot de passe :</label>
+				<input type="password" name="password" placeholder="password" required><br>
 
-		<button type="submit">Login</button>
-	</form>
-	
+				<div class="btn">
+					<button type="submit">Login</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
 </body>
 </html>

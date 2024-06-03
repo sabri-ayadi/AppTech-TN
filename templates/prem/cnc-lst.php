@@ -28,7 +28,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
     <?php include "cnc/cnc-tab-lst.php";?>
    
     <div class="d-flex justify-content-between align-items-center my-margin">
-      <h2><font color="#001dad">Interventions CNC</font></h2>
+      <h2><font color="#001dad">Interventions sur machines</font></h2>
         <div class="flex-container">
             <a href="adm-cnc.php" class="btn btn-success" type="button">Add</a>
         </div>
