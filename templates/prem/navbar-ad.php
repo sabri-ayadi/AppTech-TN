@@ -3,9 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
         <link rel="stylesheet" href="/assets/navbar-ad/navbar-style.css">
 
     </head>
@@ -93,12 +91,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
 
                             <a href="#" class="nav__link">
                                 <i class='bx bx-message-rounded nav__icon' ></i>
