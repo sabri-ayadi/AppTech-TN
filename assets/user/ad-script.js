@@ -31,39 +31,60 @@ Chart.defaults.global.elements.point.radius = 0
 Chart.defaults.global.responsive = true
 Chart.defaults.global.maintainAspectRatio = false
 
+//--------------------------------------------------------------//
 
- // Function to fetch data from PHP script
- async function fetchData() {
-  try {
-    const response = await fetch('conf/bar-chart.php');
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+// The line chart
+var chart = new Chart(document.getElementById('myChart2'), {
+  type: 'line',
+  data: {
+    labels: ["January", "February", "March", "April", 'May', 'June', 'August', 'September'],
+    datasets: [{
+      label: "My First dataset",
+      data: [4, 20, 5, 20, 5, 25, 9, 18],
+      backgroundColor: 'transparent',
+      borderColor: '#0d6efd',
+      lineTension: .4,
+      borderWidth: 1.5,
+    }, {
+      label: "Month",
+      data: [11, 25, 10, 25, 10, 30, 14, 23],
+      backgroundColor: 'transparent',
+      borderColor: '#dc3545',
+      lineTension: .4,
+      borderWidth: 1.5,
+    }, {
+      label: "Month",
+      data: [16, 30, 16, 30, 16, 36, 21, 35],
+      backgroundColor: 'transparent',
+      borderColor: '#f0ad4e',
+      lineTension: .4,
+      borderWidth: 1.5,
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        gridLines: {
+          drawBorder: false
+        },
+        ticks: {
+          stepSize: 12,
+        }
+      }],
+      xAxes: [{
+        gridLines: {
+          display: false,
+        },
+      }]
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
-    return [];
   }
-}
+})
 
 
-// Function to create the chart// Function to fetch data from PHP script
-async function fetchData() {
-  try {
-    const response = await fetch('conf/bar-chart.php');
-    const text = await response.text();  // Get the raw text response
-    console.log('Raw response:', text);  // Log the raw response for debugging
 
-    const data = JSON.parse(text);  // Parse the JSON data
-    return data;
-  } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
-    return [];
-  }
-}
 
-// Function to create the chart
+//------------------------------------------------//
+
 // Function to fetch data from PHP script
 async function fetchData() {
   try {
@@ -85,22 +106,27 @@ async function fetchData() {
 }
 
 // Function to merge interventions and demands data
-// Function to merge interventions and demands data
 function mergeData(interventions, demands) {
   const mergedData = [];
-  const maxLength = Math.max(interventions.length, demands.length);
-  for (let i = 0; i < maxLength; i++) {
-    const interventionCount = interventions[i] ? interventions[i].count : 0;
-    const demandCount = demands[i] ? demands[i].count : 0;
+  const monthSet = new Set();
+
+  interventions.forEach(item => monthSet.add(item.month));
+  demands.forEach(item => monthSet.add(item.month));
+
+  const months = Array.from(monthSet);
+
+  months.forEach(month => {
+    const intervention = interventions.find(item => item.month === month);
+    const demand = demands.find(item => item.month === month);
     mergedData.push({
-      month: interventions[i] ? interventions[i].month : demands[i].month,
-      interventions: interventionCount,
-      demands: demandCount
+      month: month,
+      interventions: intervention ? intervention.count : 0,
+      demands: demand ? demand.count : 0
     });
-  }
+  });
+
   return mergedData;
 }
-
 
 // Function to create the chart
 async function createChart() {
@@ -155,53 +181,3 @@ async function createChart() {
 
 // Create the chart when the page loads
 window.onload = createChart;
-
-
-
-
-// The line chart
-var chart = new Chart(document.getElementById('myChart2'), {
-  type: 'line',
-  data: {
-    labels: ["January", "February", "March", "April", 'May', 'June', 'August', 'September'],
-    datasets: [{
-      label: "My First dataset",
-      data: [4, 20, 5, 20, 5, 25, 9, 18],
-      backgroundColor: 'transparent',
-      borderColor: '#0d6efd',
-      lineTension: .4,
-      borderWidth: 1.5,
-    }, {
-      label: "Month",
-      data: [11, 25, 10, 25, 10, 30, 14, 23],
-      backgroundColor: 'transparent',
-      borderColor: '#dc3545',
-      lineTension: .4,
-      borderWidth: 1.5,
-    }, {
-      label: "Month",
-      data: [16, 30, 16, 30, 16, 36, 21, 35],
-      backgroundColor: 'transparent',
-      borderColor: '#f0ad4e',
-      lineTension: .4,
-      borderWidth: 1.5,
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        gridLines: {
-          drawBorder: false
-        },
-        ticks: {
-          stepSize: 12,
-        }
-      }],
-      xAxes: [{
-        gridLines: {
-          display: false,
-        },
-      }]
-    }
-  }
-})

@@ -1,12 +1,11 @@
 <?php
 require dirname(__DIR__) . '/../../includes/db_connect.php';
 
-// http://localhost:8080/templates/prem/conf/bar-chart.php verif json data source
 // Set the content type to JSON
 header('Content-Type: application/json');
 
 // Initialize data array
-$data = [];
+$data = ['interventions' => [], 'demands' => []];
 
 // Check if the connection was successful
 if ($conn->connect_error) {
@@ -18,9 +17,9 @@ if ($conn->connect_error) {
 // Query to get the count of interventions per month
 $sqlInterventions = "SELECT MONTHNAME(created_dt) as month, COUNT(*) as count
                      FROM interdemande
-                     WHERE type = 'Intervention'
+                     WHERE type = 'intervention'
                      GROUP BY YEAR(created_dt), MONTH(created_dt)
-                     ORDER BY MONTH(created_dt)";
+                     ORDER BY YEAR(created_dt), MONTH(created_dt)";
 $resultInterventions = $conn->query($sqlInterventions);
 
 // Check if the query for interventions was successful
@@ -38,9 +37,9 @@ while ($row = $resultInterventions->fetch_assoc()) {
 // Query to get the count of demands per month
 $sqlDemands = "SELECT MONTHNAME(created_dt) as month, COUNT(*) as count
                FROM interdemande
-               WHERE type = 'Demande'
+               WHERE type = 'demande'
                GROUP BY YEAR(created_dt), MONTH(created_dt)
-               ORDER BY MONTH(created_dt)";
+               ORDER BY YEAR(created_dt), MONTH(created_dt)";
 $resultDemands = $conn->query($sqlDemands);
 
 // Check if the query for demands was successful
@@ -60,4 +59,3 @@ $conn->close();
 
 // Encode data in JSON format
 echo json_encode($data);
-?>
