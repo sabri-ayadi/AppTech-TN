@@ -13,6 +13,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat'])&& $_SESSION['type'] == 1) 
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'>
           <link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'>
+          <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
           <link rel="stylesheet" href="/assets/user/ad-panel.css">
 
      </head>
@@ -87,10 +89,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat'])&& $_SESSION['type'] == 1) 
           <section class="charts mt-4">
                <div class="row">
                <div class="col-lg-6">
-                    <div class="chart-container rounded-2 p-3">
-                    <h3 class="fs-6 mb-3">Chart title number one</h3>
+               <div class="chart-container rounded-2 p-3">
+                    <h3 class="fs-6 mb-3">Nombre des Interventions et Demandes / mois</h3>
                     <canvas id="myChart"></canvas>
-                    </div>
+               </div>
                </div>
                <div class="col-lg-6">
                     <div class="chart-container rounded-2 p-3">
@@ -102,47 +104,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat'])&& $_SESSION['type'] == 1) 
           </section>
           
 
-          <section class="statis mt-4 text-center">
-               <div class="row">
-               <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <div class="box bg-primary p-3">
-                    <i class="uil-eye"></i>
-                    <h3><?php echo $count_devices; ?></h3>
-                    <p class="lead">Device</p>
-                    </div>
-               </div>
-               <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <div class="box bg-danger p-3">
-                    <i class="uil-user"></i>
-                    <h3><?php echo $count_users; ?></h3>
-                    <p class="lead">User registered</p>
-                    </div>
-               </div>
-               <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-                    <div class="box bg-warning p-3">
-                    <i class="uil-shopping-cart"></i>
-                    <h3>5,154</h3>
-                    <p class="lead">Product sales</p>
-                    </div>
-               </div>
-               <div class="col-md-6 col-lg-3">
-                    <div class="box bg-success p-3">
-                    <i class="uil-feedback"></i>
-                    <h3>5,154</h3>
-                    <p class="lead">Transactions</p>
-                    </div>
-               </div>
-               </div>
-          </section>
+          
 
 
           <!-- partial -->
      <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js'></script>
+
      <!-- <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
      <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script> -->
+
      <script  src="/assets/user/ad-script.js"></script>
   
 
+     <script>
+
+    
+
+    </script>
 
      </body>
      </html>

@@ -32,45 +32,131 @@ Chart.defaults.global.responsive = true
 Chart.defaults.global.maintainAspectRatio = false
 
 
-
-// The bar chart
-var myChart = new Chart(document.getElementById('myChart'), {
-  type: 'bar',
-  data: {
-    labels: ["January", "February", "March", "April", 'May', 'June', 'August', 'September'],
-    datasets: [{
-      label: "Lost",
-      data: [45, 25, 40, 20, 60, 20, 35, 25],
-      backgroundColor: "#0d6efd",
-      borderColor: 'transparent',
-      borderWidth: 2.5,
-      barPercentage: 0.4,
-    }, {
-      label: "Succes",
-      startAngle: 2,
-      data: [20, 40, 20, 50, 25, 40, 25, 10],
-      backgroundColor: "#dc3545",
-      borderColor: 'transparent',
-      borderWidth: 2.5,
-      barPercentage: 0.4,
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        gridLines: {},
-        ticks: {
-          stepSize: 15,
-        },
-      }],
-      xAxes: [{
-        gridLines: {
-          display: false,
-        }
-      }]
+ // Function to fetch data from PHP script
+ async function fetchData() {
+  try {
+    const response = await fetch('conf/bar-chart.php');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    return [];
   }
-})
+}
+
+
+// Function to create the chart// Function to fetch data from PHP script
+async function fetchData() {
+  try {
+    const response = await fetch('conf/bar-chart.php');
+    const text = await response.text();  // Get the raw text response
+    console.log('Raw response:', text);  // Log the raw response for debugging
+
+    const data = JSON.parse(text);  // Parse the JSON data
+    return data;
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    return [];
+  }
+}
+
+// Function to create the chart
+// Function to fetch data from PHP script
+async function fetchData() {
+  try {
+    const response = await fetch('conf/bar-chart.php');
+    const jsonData = await response.json();
+
+    if (jsonData.error) {
+      console.error('Error fetching data:', jsonData.error);
+      return [];
+    }
+
+    // Merge interventions and demands data
+    const data = mergeData(jsonData.interventions, jsonData.demands);
+    return data;
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    return [];
+  }
+}
+
+// Function to merge interventions and demands data
+// Function to merge interventions and demands data
+function mergeData(interventions, demands) {
+  const mergedData = [];
+  const maxLength = Math.max(interventions.length, demands.length);
+  for (let i = 0; i < maxLength; i++) {
+    const interventionCount = interventions[i] ? interventions[i].count : 0;
+    const demandCount = demands[i] ? demands[i].count : 0;
+    mergedData.push({
+      month: interventions[i] ? interventions[i].month : demands[i].month,
+      interventions: interventionCount,
+      demands: demandCount
+    });
+  }
+  return mergedData;
+}
+
+
+// Function to create the chart
+async function createChart() {
+  const data = await fetchData();
+  if (data.length === 0) {
+    console.error('No data available for the chart');
+    return;
+  }
+
+  const labels = data.map(item => item.month);
+  const interventionsData = data.map(item => item.interventions);
+  const demandsData = data.map(item => item.demands);
+
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Interventions',
+        data: interventionsData,
+        backgroundColor: '#0d6efd',
+        borderColor: 'transparent',
+        borderWidth: 2.5,
+        barPercentage: 0.4,
+      }, {
+        label: 'Demands',
+        data: demandsData,
+        backgroundColor: '#dc3545',
+        borderColor: 'transparent',
+        borderWidth: 2.5,
+        barPercentage: 0.4,
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          gridLines: {},
+          ticks: {
+            stepSize: 15,
+          },
+        }],
+        xAxes: [{
+          gridLines: {
+            display: false,
+          }
+        }]
+      }
+    }
+  });
+}
+
+// Create the chart when the page loads
+window.onload = createChart;
+
+
 
 
 // The line chart
