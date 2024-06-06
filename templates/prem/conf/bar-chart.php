@@ -1,6 +1,7 @@
 <?php
 require dirname(__DIR__) . '/../../includes/db_connect.php';
 
+// http://localhost:8080/templates/prem/conf/bar-chart.php verify the json data structure
 // Set the content type to JSON
 header('Content-Type: application/json');
 
