@@ -1,5 +1,4 @@
 <?php 
-// home.php
 session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1) { ?> 
@@ -10,21 +9,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
   <meta charset="UTF-8">
   <title>CNC Equip</title>
 
-<!-- Bootstrap 5 CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-<!-- Data Table CSS -->
 <link rel='stylesheet' href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
-<!-- Font Awesome CSS -->
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
-
-
 <link rel="stylesheet" href="/assets/suiv-ad/inter-style.css">
 
-<style>
-  /* Styles for the dropdown button */
-
-  
-</style>
 </head>
 <body>
 
@@ -68,14 +57,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
                 echo "<td>" . $row["ip_1"] . "</td>";
                 echo "<td>" . $row["ip_cam_r"] . "</td>";
                 echo "<td>" . $row["ip_cam_l"] . "</td>";
-                echo "<td class='actions'><a href='inter-view.php?id_machine=". $row["id_machine"]. "'>View</a> | <a href='inter-edit.php?id_machine=". $row["id_machine"]. "'>Edit</a> | <a href='inter-delete.php?id_machine=". $row["id_machine"]. "'>Delete</a></td>";
+                echo "<td class='actions'><a href='cnc-dev-view.php?id_machine=". $row["id_machine"]. "'>View</a> | <a href='cnc-dev-edit.php?id_machine=". $row["id_machine"]. "'>Edit</a></td>";
                 echo "</tr>";
             }
         } 
-        // else {
-        //     // Display a message to the user
-        //     echo "<tr><td colspan='7'>No data found.</td></tr>";
-        // } 
+        else {
+            // Display a message to the user
+            echo "<tr><td colspan='7'>No data found.</td></tr>";
+        } 
       ?>
                 
   </tbody>

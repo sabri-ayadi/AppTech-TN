@@ -84,7 +84,6 @@ var chart = new Chart(document.getElementById('myChart2'), {
 
 
 //------------------------------------------------//
-
 // Function to fetch data from PHP script
 async function fetchData() {
   try {
@@ -96,8 +95,8 @@ async function fetchData() {
       return [];
     }
 
-    // Merge interventions and demands data
-    const data = mergeData(jsonData.interventions, jsonData.demands);
+    // Merge interventions, demands, and cncInter
+    const data = mergeData(jsonData.interventions, jsonData.demands, jsonData.cncInter);
     return data;
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
@@ -105,23 +104,26 @@ async function fetchData() {
   }
 }
 
-// Function to merge interventions and demands data
-function mergeData(interventions, demands) {
+// Function to merge interventions, demands, and cncInter
+function mergeData(interventions, demands, cncInter) {
   const mergedData = [];
   const monthSet = new Set();
 
   interventions.forEach(item => monthSet.add(item.month));
   demands.forEach(item => monthSet.add(item.month));
+  cncInter.forEach(item => monthSet.add(item.month));
 
   const months = Array.from(monthSet);
 
   months.forEach(month => {
     const intervention = interventions.find(item => item.month === month);
     const demand = demands.find(item => item.month === month);
+    const third = cncInter.find(item => item.month === month);
     mergedData.push({
       month: month,
       interventions: intervention ? intervention.count : 0,
-      demands: demand ? demand.count : 0
+      demands: demand ? demand.count : 0,
+      cncInter: third ? third.count : 0
     });
   });
 
@@ -139,6 +141,7 @@ async function createChart() {
   const labels = data.map(item => item.month);
   const interventionsData = data.map(item => item.interventions);
   const demandsData = data.map(item => item.demands);
+  const cncInter = data.map(item => item.cncInter);
 
   const ctx = document.getElementById('myChart').getContext('2d');
   const myChart = new Chart(ctx, {
@@ -156,6 +159,13 @@ async function createChart() {
         label: 'Demands',
         data: demandsData,
         backgroundColor: '#dc3545',
+        borderColor: 'transparent',
+        borderWidth: 2.5,
+        barPercentage: 0.4,
+      }, {
+        label: 'CNC Intervs',
+        data: cncInter,
+        backgroundColor: '#28a745',
         borderColor: 'transparent',
         borderWidth: 2.5,
         barPercentage: 0.4,

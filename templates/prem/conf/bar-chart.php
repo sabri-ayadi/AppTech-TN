@@ -6,7 +6,7 @@ require dirname(__DIR__) . '/../../includes/db_connect.php';
 header('Content-Type: application/json');
 
 // Initialize data array
-$data = ['interventions' => [], 'demands' => []];
+$data = ['interventions' => [], 'demands' => [], 'cncInter' => []];
 
 // Check if the connection was successful
 if ($conn->connect_error) {
@@ -55,8 +55,28 @@ while ($row = $resultDemands->fetch_assoc()) {
     $data['demands'][] = $row;
 }
 
+// Query to get the count of third data per month
+$sqlCncInter = "SELECT MONTHNAME(created_dt) as month, COUNT(*) as count
+                 FROM cnc_inter
+                 GROUP BY YEAR(created_dt), MONTH(created_dt)
+                 ORDER BY YEAR(created_dt), MONTH(created_dt)";
+$resultCncInter = $conn->query($sqlCncInter);
+
+// Check if the query for third data was successful
+if ($resultCncInter === FALSE) {
+    $data = ["error" => "Query for third data failed: " . $conn->error];
+    echo json_encode($data);
+    exit();
+}
+
+// Fetch third data
+while ($row = $resultCncInter->fetch_assoc()) {
+    $data['cncInter'][] = $row;
+}
+
 // Close the connection
 $conn->close();
 
 // Encode data in JSON format
 echo json_encode($data);
+?>

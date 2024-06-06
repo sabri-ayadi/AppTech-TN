@@ -1,5 +1,4 @@
 <?php
-// user-edit.php
 session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1) {

@@ -90,7 +90,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat'])&& $_SESSION['type'] == 1) 
                <div class="row">
                <div class="col-lg-6">
                <div class="chart-container rounded-2 p-3">
-                    <h3 class="fs-6 mb-3">Nombre des Interventions et Demandes / mois</h3>
+                    <h3 class="fs-6 mb-3">Interventions, Demandes et CNC Interv / mois</h3>
                     <canvas id="myChart"></canvas>
                </div>
                </div>
