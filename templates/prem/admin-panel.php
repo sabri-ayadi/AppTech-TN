@@ -25,23 +25,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat'])&& $_SESSION['type'] == 1) 
           <div class="p-4">
           <h1 class="fs-3">Dashboard:</h1>
 
-          <div class="welcome">
-               <div class="content rounded-3 p-3">
-               <h1 class="fs-3">Bienvenue, <?php echo $_SESSION['fullname']; ?></h1>
-               <p class="mb-0">- Email : <?php echo $_SESSION['mail']; ?></p>
-               <p class="mb-0">- User Type : <?php echo $_SESSION['type']; ?></p>
-               <p class="mb-0">- Matriculation Number : <?php echo $_SESSION['mat']; ?></p>
-               <p class="mb-0">- Today is : <?php echo date("Y-m-d"); ?></p>
-               <p class="mb-0">- The time is : <?php echo date("h:i a"); ?></p>
-
-               <?php
-               $host = gethostbyaddr($_SERVER["REMOTE_ADDR"]);
-               echo $host;
-               ?> 
-               
+               <div class="welcome">
+               <div class="content rounded-3 p-3 d-flex justify-content-between">
+                    <!-- Left Column -->
+                    <div class="left-column">
+                         <h1 class="fs-3">Bienvenue, <?php echo $_SESSION['fullname']; ?></h1>
+                         <p class="mb-0">- Email : <?php echo $_SESSION['mail']; ?></p>
+                         <p class="mb-0">- User Type : <?php echo $_SESSION['type']; ?></p>
+                         <p class="mb-0">- Matriculation Number : <?php echo $_SESSION['mat']; ?></p>
+                    </div>
+                    <!-- Right Column -->
+                    <div class="right-column">
+                         </br>
+                         <p class="mb-0">- Today is : <?php echo date("Y-m-d"); ?></p>
+                         <p class="mb-0">- The time is : <?php echo date("h:i a"); ?></p>
+                         <p class="mb-0">- My address is: <?php
+                              $host = gethostbyaddr($_SERVER["REMOTE_ADDR"]);
+                              echo $host; ?></p>
+                    </div>
+               </div>
                </div>
 
-          </div>
+
 
 
           <section class="statistics mt-4">
@@ -109,29 +114,29 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat'])&& $_SESSION['type'] == 1) 
                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
                     <div class="box bg-primary p-3">
                     <i class="uil-eye"></i>
-                    <h3><?php echo $count_devices; ?></h3>
-                    <p class="lead">Device</p>
+                    <h3><?php echo $count_devices; ?> Devices</h3>
+                    <p class="lead">Up = <?php echo $count_devices_up; ?> - Down = <?php echo $count_devices_down; ?></p>
                     </div>
                </div>
                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
                     <div class="box bg-danger p-3">
                     <i class="uil-user"></i>
-                    <h3><?php echo $count_users; ?></h3>
-                    <p class="lead">User registered</p>
+                    <h3><?php echo $count_users; ?> Users</h3>
+                    <p class="lead">Ordin = <?php echo $count_user_nr; ?> - Admin = <?php echo $count_user_ad; ?></p>
                     </div>
                </div>
                <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
                     <div class="box bg-warning p-3">
                     <i class="uil-shopping-cart"></i>
-                    <h3>5,154</h3>
-                    <p class="lead">Product sales</p>
+                    <h3><?php echo $count_interventions; ?></h3>
+                    <p class="lead">Corrective = <?php echo $count_inter_corrective; ?> - Préventive = <?php echo $count_inter_preventive; ?></p>
                     </div>
                </div>
                <div class="col-md-6 col-lg-3">
                     <div class="box bg-success p-3">
                     <i class="uil-feedback"></i>
-                    <h3>5,154</h3>
-                    <p class="lead">Transactions</p>
+                    <h3>0</h3>
+                    <p class="lead">Actions Préventive</p>
                     </div>
                </div>
                </div>

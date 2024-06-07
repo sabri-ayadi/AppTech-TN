@@ -23,7 +23,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
 
 
   <div class="my-margin">
-      <h2><font color="#077cb0">Historique des opérations sur la machine : </font></h2>
+      <h2><font color="#077cb0">Historique des opérations sur la machine, ID = <?php echo htmlspecialchars($machineId); ?></font></h2>
+
   </div>
 
   <table id="example" class="table table-striped" style="width:100%">

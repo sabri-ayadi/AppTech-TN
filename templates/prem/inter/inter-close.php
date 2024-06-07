@@ -8,12 +8,14 @@ if (isset($_POST['id_inter'])) {
     $subject = mysqli_real_escape_string($conn, $_POST['subject']);
     $explication = mysqli_real_escape_string($conn, $_POST['explication']);
     $solution = mysqli_real_escape_string($conn, $_POST['solution']);
+    $maint = mysqli_real_escape_string($conn, $_POST['maint']);
     $currentDateTime = date('Y-m-d H:i:s');
 
     $sql = "UPDATE interdemande SET 
                 subject = '$subject',
                 explication = '$explication',
                 solution = '$solution',
+                maint = '$maint',
                 state = 'Clôture',
                 closed_dt = '$currentDateTime' 
             WHERE id_inter = '$id_inter'";

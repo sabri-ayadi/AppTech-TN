@@ -124,6 +124,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
             <label for="state" class="form-label">State:</label>
             <input type="text" class="form-control" id="state" name="state" value="<?php echo $row['state']; ?>" readonly>
         </div>
+        <div class="form-group">
+            <label for="maint" class="form-label">Type de Maintenance: *</label>
+            <select id="maint" name="maint" class="form-control" required>
+                <option value="Corrective" <?php if ($row['maint'] == 'Corrective') echo 'selected'; ?>>Corrective</option>
+                <option value="Préventive" <?php if ($row['maint'] == 'Préventive') echo 'selected'; ?>>Préventive</option>
+                <option value="Curative" <?php if ($row['maint'] == 'Curative') echo 'selected'; ?>>Curative</option>
+            </select>
+        </div>
         <?php if ($imgData): ?>
             <div class="mb-3">
                 <label for="image" class="form-label">Attached Image:</label><br>
@@ -180,7 +188,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 1)
                                 id_inter: <?php echo $id_inter; ?>,
                                 subject: $('#subject').val(),
                                 explication: $('#explication').val(),
-                                solution: $('#solution').val()
+                                solution: $('#solution').val(),
+                                maint: $('#maint').val()
                             };
                             $.post('inter/inter-close.php', formData, function(response) {
                                 swal("Success", "Intervention clôturée avec succès!.", "success").then(() => {

@@ -48,17 +48,36 @@ body {
  -- welcome
 -------------------------------- */
 .welcome {
-	color: var(--dk-dark-bg);
+    color: var(--dk-dark-bg);
 }
 
 .welcome .content {
-	background-color: var(--dk-gray-400);
-  	box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--dk-gray-400);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* max-width: 1000px; */
 }
 
 .welcome p {
-	color: var(--dk-gray-800);
+    color: var(--dk-gray-800);
 }
+
+.left-column, .right-column {
+    flex: 1;
+}
+
+.left-column {
+    text-align: left;
+    padding-right: 20px; /* Adjust as needed for spacing */
+}
+
+.right-column {
+    text-align: left;
+    padding-left: 20px; /* Adjust as needed for spacing */
+}
+
 
 
 
