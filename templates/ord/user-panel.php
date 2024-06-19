@@ -19,6 +19,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat']) && $_SESSION['type'] == 2)
                 <p class="paragraph">Email: <span class="mail"><?php echo $_SESSION['mail']; ?></span></p>
                 <p class="paragraph">Type: <span class="type"><?php echo $_SESSION['type']; ?></span></p>
                 <p class="paragraph">Matriculation Number: <span class="mat"><?php echo $_SESSION['mat']; ?></span></p>
+                https://codepen.io/taniarascia/pen/dYvvYv
             </div>
 
      </body>

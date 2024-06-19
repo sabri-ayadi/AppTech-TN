@@ -53,7 +53,21 @@
                                     <div class="nav__dropdown-content">
                                         <a href="inter-lst.php" class="nav__dropdown-item">Intervention</a>
                                         <a href="dema-lst.php" class="nav__dropdown-item">Demande</a>
-                                        <a href="cnc-lst.php" class="nav__dropdown-item">CNC</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nav__dropdown">
+                                <a href="#" class="nav__link">
+                                    <i class='bx bx-task nav__icon' ></i>
+                                    <span class="nav__name">CNC</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="cnc-lst.php" class="nav__dropdown-item">Interv. CNC</a>
+                                        <a href="cnc-dev-lst.php" class="nav__dropdown-item">Devices CNC</a>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +82,6 @@
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
                                         <a href="dev-lst.php" class="nav__dropdown-item">List Devices</a>
-                                        <a href="cnc-dev-lst.php" class="nav__dropdown-item">List PC CNC</a>
                                         <a href="add-laptop.php" class="nav__dropdown-item">Add Laptop</a>
                                         <a href="add-print.php" class="nav__dropdown-item">Add Imprimant</a>
                                     </div>
@@ -101,7 +114,7 @@
                         <div class="nav__items">
                             <h3 class="nav__subtitle">Menu</h3>
     
-                            <div class="nav__dropdown">
+                            <!-- <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
                                     <i class='bx bx-bell nav__icon' ></i>
                                     <span class="nav__name">Notifications</span>
@@ -117,11 +130,11 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> -->
 
                             <a href="#" class="nav__link">
                                 <i class='bx bx-compass nav__icon' ></i>
-                                <span class="nav__name">Explore</span>
+                                <span class="nav__name">Magasain</span>
                             </a>
                             <a href="#" class="nav__link">
                                 <i class='bx bx-bookmark nav__icon' ></i>
