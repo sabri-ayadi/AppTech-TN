@@ -47,8 +47,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat'])&& $_SESSION['type'] == 1) 
                </div>
 
 
-
-
           <section class="statistics mt-4">
                <div class="row">
                <div class="col-lg-4">
@@ -95,13 +93,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['mat'])&& $_SESSION['type'] == 1) 
                <div class="row">
                <div class="col-lg-6">
                <div class="chart-container rounded-2 p-3">
-                    <h3 class="fs-6 mb-3">Interventions, Demandes et CNC Interv / mois</h3>
+                    <h3 class="fs-6 mb-3">Interventions, Demandes et CNC Interv / Mois</h3>
                     <canvas id="myChart"></canvas>
                </div>
                </div>
                <div class="col-lg-6">
                     <div class="chart-container rounded-2 p-3">
-                    <h3 class="fs-6 mb-3">Chart title number two</h3>
+                    <h3 class="fs-6 mb-3">Interventions & Department / Mois</h3>
                     <canvas id="myChart2"></canvas>
                     </div>
                </div>

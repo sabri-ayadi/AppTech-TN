@@ -1,12 +1,11 @@
 <?php
 require dirname(__DIR__) . '/../../includes/db_connect.php';
 
-// http://localhost:8080/templates/prem/conf/bar-chart.php verify the json data structure
 // Set the content type to JSON
 header('Content-Type: application/json');
 
 // Initialize data array
-$data = ['interventions' => [], 'demands' => [], 'cncInter' => []];
+$data = ['interventions' => [], 'demands' => [], 'cncInter' => [], 'departmentInterventions' => []];
 
 // Check if the connection was successful
 if ($conn->connect_error) {
@@ -72,6 +71,27 @@ if ($resultCncInter === FALSE) {
 // Fetch third data
 while ($row = $resultCncInter->fetch_assoc()) {
     $data['cncInter'][] = $row;
+}
+
+// Query to get the count of interventions per department per month
+$sqlDepartmentInterventions = "SELECT MONTHNAME(i.created_dt) as month, u.department, COUNT(*) as count
+                               FROM interdemande i
+                               JOIN user u ON i.mat = u.mat
+                               WHERE i.type = 'intervention'
+                               GROUP BY YEAR(i.created_dt), MONTH(i.created_dt), u.department
+                               ORDER BY YEAR(i.created_dt), MONTH(i.created_dt), u.department";
+$resultDepartmentInterventions = $conn->query($sqlDepartmentInterventions);
+
+// Check if the query for department interventions was successful
+if ($resultDepartmentInterventions === FALSE) {
+    $data = ["error" => "Query for department interventions failed: " . $conn->error];
+    echo json_encode($data);
+    exit();
+}
+
+// Fetch department interventions data
+while ($row = $resultDepartmentInterventions->fetch_assoc()) {
+    $data['departmentInterventions'][] = $row;
 }
 
 // Close the connection

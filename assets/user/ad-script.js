@@ -34,56 +34,56 @@ Chart.defaults.global.maintainAspectRatio = false
 //--------------------------------------------------------------//
 
 // The line chart
-var chart = new Chart(document.getElementById('myChart2'), {
-  type: 'line',
-  data: {
-    labels: ["January", "February", "March", "April", 'May', 'June', 'August', 'September'],
-    datasets: [{
-      label: "My First dataset",
-      data: [4, 20, 5, 20, 5, 25, 9, 18],
-      backgroundColor: 'transparent',
-      borderColor: '#0d6efd',
-      lineTension: .4,
-      borderWidth: 1.5,
-    }, {
-      label: "Month",
-      data: [11, 25, 10, 25, 10, 30, 14, 23],
-      backgroundColor: 'transparent',
-      borderColor: '#dc3545',
-      lineTension: .4,
-      borderWidth: 1.5,
-    }, {
-      label: "Month",
-      data: [16, 30, 16, 30, 16, 36, 21, 35],
-      backgroundColor: 'transparent',
-      borderColor: '#f0ad4e',
-      lineTension: .4,
-      borderWidth: 1.5,
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        gridLines: {
-          drawBorder: false
-        },
-        ticks: {
-          stepSize: 12,
-        }
-      }],
-      xAxes: [{
-        gridLines: {
-          display: false,
-        },
-      }]
-    }
-  }
-})
+// var chart = new Chart(document.getElementById('myChart2'), {
+//   type: 'line',
+//   data: {
+//     labels: ["January", "February", "March", "April", 'May', 'June', 'August', 'September'],
+//     datasets: [{
+//       label: "My First dataset",
+//       data: [4, 20, 5, 20, 5, 25, 9, 18],
+//       backgroundColor: 'transparent',
+//       borderColor: '#0d6efd',
+//       lineTension: .4,
+//       borderWidth: 1.5,
+//     }, {
+//       label: "Month",
+//       data: [11, 25, 10, 25, 10, 30, 14, 23],
+//       backgroundColor: 'transparent',
+//       borderColor: '#dc3545',
+//       lineTension: .4,
+//       borderWidth: 1.5,
+//     }, {
+//       label: "Month",
+//       data: [16, 30, 16, 30, 16, 36, 21, 35],
+//       backgroundColor: 'transparent',
+//       borderColor: '#f0ad4e',
+//       lineTension: .4,
+//       borderWidth: 1.5,
+//     }]
+//   },
+//   options: {
+//     scales: {
+//       yAxes: [{
+//         gridLines: {
+//           drawBorder: false
+//         },
+//         ticks: {
+//           stepSize: 12,
+//         }
+//       }],
+//       xAxes: [{
+//         gridLines: {
+//           display: false,
+//         },
+//       }]
+//     }
+//   }
+// })
 
 
 
 
-//------------------------------------------------//
+//----------------------------------------------------------------------------------------------//
 // Function to fetch data from PHP script
 async function fetchData() {
   try {
@@ -92,15 +92,17 @@ async function fetchData() {
 
     if (jsonData.error) {
       console.error('Error fetching data:', jsonData.error);
-      return [];
+      return { data1: [], data2: [] };
     }
 
     // Merge interventions, demands, and cncInter
-    const data = mergeData(jsonData.interventions, jsonData.demands, jsonData.cncInter);
-    return data;
+    const data1 = mergeData(jsonData.interventions, jsonData.demands, jsonData.cncInter);
+    // Process department interventions
+    const data2 = processDepartmentInterventions(jsonData.departmentInterventions);
+    return { data1, data2 };
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
-    return [];
+    return { data1: [], data2: [] };
   }
 }
 
@@ -130,14 +132,41 @@ function mergeData(interventions, demands, cncInter) {
   return mergedData;
 }
 
-// Function to create the chart
-async function createChart() {
-  const data = await fetchData();
-  if (data.length === 0) {
-    console.error('No data available for the chart');
+// Function to process department interventions
+function processDepartmentInterventions(departmentInterventions) {
+  const departmentData = {};
+  
+  departmentInterventions.forEach(item => {
+    if (!departmentData[item.department]) {
+      departmentData[item.department] = [];
+    }
+    departmentData[item.department].push({
+      month: item.month,
+      count: item.count
+    });
+  });
+
+  return departmentData;
+}
+
+// Function to create the charts
+async function createCharts() {
+  const { data1, data2 } = await fetchData();
+  if (data1.length === 0) {
+    console.error('No data available for the first chart');
     return;
   }
 
+  createChart1(data1);
+  if (Object.keys(data2).length === 0) {
+    console.error('No data available for the second chart');
+    return;
+  }
+  createChart2(data2);
+}
+
+// Function to create the first chart
+function createChart1(data) {
   const labels = data.map(item => item.month);
   const interventionsData = data.map(item => item.interventions);
   const demandsData = data.map(item => item.demands);
@@ -189,5 +218,61 @@ async function createChart() {
   });
 }
 
-// Create the chart when the page loads
-window.onload = createChart;
+// Function to create the second chart
+function createChart2(data) {
+  const departments = Object.keys(data);
+  const months = Array.from(new Set(Object.values(data).flatMap(depData => depData.map(item => item.month))));
+  
+  const datasets = departments.map(department => {
+    const departmentData = data[department];
+    const counts = months.map(month => {
+      const item = departmentData.find(i => i.month === month);
+      return item ? item.count : 0;
+    });
+    return {
+      label: department,
+      data: counts,
+      backgroundColor: getRandomColor(),
+      borderColor: 'transparent',
+      borderWidth: 2.5,
+      barPercentage: 0.4,
+    };
+  });
+
+  const ctx = document.getElementById('myChart2').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: datasets,
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          gridLines: {},
+          ticks: {
+            stepSize: 15,
+          },
+        }],
+        xAxes: [{
+          gridLines: {
+            display: false,
+          }
+        }]
+      }
+    }
+  });
+}
+
+// Utility function to generate a random color
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+// Create the charts when the page loads
+window.onload = createCharts;

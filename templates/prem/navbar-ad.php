@@ -59,7 +59,7 @@
 
                             <div class="nav__dropdown">
                                 <a href="#" class="nav__link">
-                                    <i class='bx bx-task nav__icon' ></i>
+                                    <i class='bx bx-slider nav__icon' ></i>
                                     <span class="nav__name">CNC</span>
                                     <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                                 </a>
@@ -114,26 +114,8 @@
                         <div class="nav__items">
                             <h3 class="nav__subtitle">Menu</h3>
     
-                            <!-- <div class="nav__dropdown">
-                                <a href="#" class="nav__link">
-                                    <i class='bx bx-bell nav__icon' ></i>
-                                    <span class="nav__name">Notifications</span>
-                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
-                                </a>
-
-                                <div class="nav__dropdown-collapse">
-                                    <div class="nav__dropdown-content">
-                                        <a href="#" class="nav__dropdown-item">Blocked</a>
-                                        <a href="#" class="nav__dropdown-item">Silenced</a>
-                                        <a href="#" class="nav__dropdown-item">Publish</a>
-                                        <a href="#" class="nav__dropdown-item">Program</a>
-                                    </div>
-                                </div>
-
-                            </div> -->
-
                             <a href="#" class="nav__link">
-                                <i class='bx bx-compass nav__icon' ></i>
+                                <i class='bx bx-store nav__icon' ></i>
                                 <span class="nav__name">Magasain</span>
                             </a>
                             <a href="#" class="nav__link">
